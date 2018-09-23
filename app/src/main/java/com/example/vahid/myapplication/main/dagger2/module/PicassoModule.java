@@ -2,24 +2,30 @@ package com.example.vahid.myapplication.main.dagger2.module;
 
 import android.content.Context;
 
+import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
 
 
-@Module
+@Module(includes = {ContextModule.class,ClientModule.class})
 public class PicassoModule {
 
-    private Context context;
 
-    public PicassoModule(Context context) {
-        this.context = context;
+
+    @Provides
+    public Picasso picasso(Context context,OkHttp3Downloader downloader){
+        return new Picasso.Builder(context)
+                .downloader(downloader)
+                .build();
     }
 
     @Provides
-    public Picasso picasso(){
-        return new Picasso.Builder(context).build();
-    }
+     public OkHttp3Downloader downloader(OkHttpClient client){
+        return new OkHttp3Downloader(client);
+     }
+
 
 }

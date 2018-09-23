@@ -4,11 +4,9 @@ import android.app.Application;
 
 import com.example.vahid.myapplication.main.dagger2.ApplicationComponent;
 import com.example.vahid.myapplication.main.dagger2.DaggerApplicationComponent;
-import com.example.vahid.myapplication.main.dagger2.module.PicassoModule;
+import com.example.vahid.myapplication.main.dagger2.module.ContextModule;
 
 public class App extends Application {
-
-//    private Picasso picasso;
 
     static ApplicationComponent component;
 
@@ -17,24 +15,25 @@ public class App extends Application {
         super.onCreate();
 
         component = DaggerApplicationComponent.builder()
-                .picassoModule(new PicassoModule(this))
+                .contextModule(new ContextModule(this))
                 .build();
 
+        //equals to above  code
+//        component = DaggerApplicationComponent.builder()
+//                .picassoModule(new PicassoModule())
+//                .clientModule(new ClientModule())
+//                .contextModule(new ContextModule(this))
+//                .build();
 
-        //component.injdect2();
 
 
-        //picasso = component.getPicasso();
+
 
     }
 
 
-    public static ApplicationComponent getComponent(){
+    public static ApplicationComponent getComponent() {
         return component;
     }
-
-//    public Picasso getPicasso(){
-//        return picasso;
-//    }
 
 }
