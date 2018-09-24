@@ -1,4 +1,4 @@
-package com.example.vahid.myapplication.main.dagger2.module;
+package com.example.vahid.myapplication.main.app.dagger2.module;
 
 import com.example.vahid.myapplication.common.Config;
 import com.example.vahid.myapplication.net.Api;

@@ -1,9 +1,8 @@
-package com.example.vahid.myapplication.main.dagger2.module;
+package com.example.vahid.myapplication.main.app.dagger2.module;
 
-import android.app.Activity;
 import android.content.Context;
 
-import com.example.vahid.myapplication.main.App;
+import com.example.vahid.myapplication.main.app.App;
 
 import dagger.Module;
 import dagger.Provides;

@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:layout_height="match_parent"
-    tools:context=".main.MainActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        />
+
+
 </LinearLayout>
