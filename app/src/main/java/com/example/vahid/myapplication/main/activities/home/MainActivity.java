@@ -2,24 +2,30 @@ package com.example.vahid.myapplication.main.activities.home;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
-
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import com.example.vahid.myapplication.R;
+import com.example.vahid.myapplication.main.adapter.DataAdapter;
 import com.example.vahid.myapplication.main.app.App;
 import com.example.vahid.myapplication.net.ApiService;
 import com.example.vahid.myapplication.net.data.ManagementData;
 import com.example.vahid.myapplication.net.model.DataItem;
-import com.example.vahid.myapplication.net.model.MovieModel;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.rv)
+    RecyclerView rv;
+
+
     @Inject
-    Picasso picasso;
+    DataAdapter adapter;
 
     @Inject
     public ApiService service;
@@ -30,18 +36,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ImageView img = findViewById(R.id.img);
-
         App.getComponent().injdect2(this);
-        picasso.load("http://square.github.io/picasso/static/sample.png").into(img);
+        setContentView(R.layout.activity_main);
 
+        ButterKnife.bind(this);
 
-
+        rv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
         managementData.getDataNet(0, new ManagementData.onCallback() {
             @Override
             public void data(List<DataItem> dataItems) {
+
+                adapter.setDataItems(dataItems);
+                rv.setAdapter(adapter);
 
             }
 

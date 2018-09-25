@@ -12,10 +12,6 @@ public class ApiService {
         this.api = api;
     }
 
-//    public Call<String> getCheckServer(Api api){
-//        return api.getCheckServer("","","","api/users");
-//    }
-
     public Call<MovieModel> getMovieCall(Integer page) {
         return api.getMovie(page);
     }
