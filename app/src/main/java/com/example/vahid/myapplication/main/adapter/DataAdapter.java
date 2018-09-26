@@ -66,15 +66,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyHolder> {
             super(itemView);
             ButterKnife.bind(this.itemView);
         }
-
-
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.tvName.setText(dataItems.get(position).getFirstName() + dataItems.get(position).getLastName());
         picasso.load(dataItems.get(position).getAvatar()).into(holder.imgAvatar);
     }
-
 
 }
