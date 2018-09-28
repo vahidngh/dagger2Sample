@@ -2,6 +2,9 @@ package com.example.vahid.myapplication.net.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class DataItem {
 
     @SerializedName("last_name")

@@ -4,6 +4,8 @@ import com.example.vahid.myapplication.common.Config;
 import com.example.vahid.myapplication.net.Api;
 import com.example.vahid.myapplication.net.ApiService;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -21,9 +23,9 @@ public class retrofitModule {
     }
 
     @Provides
-    public Retrofit retrofit(OkHttpClient client){
+    public Retrofit retrofit(OkHttpClient client, @Named("url")String url){
         return new Retrofit.Builder()
-                .baseUrl(Config.URL)
+                .baseUrl(url)
                 .client(client)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

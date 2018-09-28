@@ -5,13 +5,15 @@ import android.content.Context;
 
 import java.io.File;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 
 
-@Module (includes = ContextModule.class)
+@Module
 public class ClientModule {
 
 
@@ -24,8 +26,8 @@ public class ClientModule {
     }
 
     @Provides
-    public Cache cache(File file){
-        return new Cache(file,5*1024*1024);
+    public Cache cache(File file, @Named("cacheMaxSize")Integer cacheMaxSize){
+        return new Cache(file,cacheMaxSize);
     }
 
 

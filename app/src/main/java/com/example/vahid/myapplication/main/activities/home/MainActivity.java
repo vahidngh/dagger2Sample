@@ -1,15 +1,19 @@
 package com.example.vahid.myapplication.main.activities.home;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import com.example.vahid.myapplication.R;
+import com.example.vahid.myapplication.main.activities.user.UserDetail;
 import com.example.vahid.myapplication.main.adapter.DataAdapter;
 import com.example.vahid.myapplication.main.app.App;
 import com.example.vahid.myapplication.net.ApiService;
 import com.example.vahid.myapplication.net.data.ManagementData;
 import com.example.vahid.myapplication.net.model.DataItem;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -55,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void error(String msg) {
 
+            }
+        });
+
+        adapter.setListener(new DataAdapter.MyHolder.ItemClickListener() {
+            @Override
+            public void onClick(DataItem dataItem) {
+                Intent intent = new Intent(MainActivity.this, UserDetail.class);
+                intent.putExtra("data", Parcels.wrap(dataItem));
+                startActivity(intent);
             }
         });
 
